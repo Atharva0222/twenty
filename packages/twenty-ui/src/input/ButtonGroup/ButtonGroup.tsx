@@ -2,7 +2,8 @@ import { clsx } from 'clsx';
 import React, { type ReactNode } from 'react';
 import { isDefined } from '@ui/utilities/utils/isDefined';
 
-import { type ButtonPosition, type ButtonProps } from '@ui/input/Button/Button';
+import type { ButtonPosition } from '@ui/input/Button/types/ButtonPosition';
+import type { ButtonProps } from '@ui/input/Button/types/ButtonProps';
 
 import styles from './ButtonGroup.module.scss';
 

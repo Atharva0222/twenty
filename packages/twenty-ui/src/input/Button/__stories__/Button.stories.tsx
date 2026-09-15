@@ -6,13 +6,11 @@ import {
   type CatalogStory,
   ComponentDecorator,
 } from '@ui/testing';
-import {
-  Button,
-  type ButtonAccent,
-  type ButtonPosition,
-  type ButtonSize,
-  type ButtonVariant,
-} from '@ui/input/Button/Button';
+import { Button } from '@ui/input/Button/Button';
+import type { ButtonAccent } from '@ui/input/Button/types/ButtonAccent';
+import type { ButtonPosition } from '@ui/input/Button/types/ButtonPosition';
+import type { ButtonSize } from '@ui/input/Button/types/ButtonSize';
+import type { ButtonVariant } from '@ui/input/Button/types/ButtonVariant';
 
 const meta: Meta<typeof Button> = {
   title: 'UI/Input/Button/Button',

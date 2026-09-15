@@ -1,7 +1,5 @@
-import {
-  AnimatedPlaceholder,
-  type AnimatedPlaceholderType,
-} from '@ui/feedback/AnimatedPlaceholder/AnimatedPlaceholder';
+import { AnimatedPlaceholder } from '@ui/feedback/AnimatedPlaceholder/AnimatedPlaceholder';
+import type { AnimatedPlaceholderType } from '@ui/feedback/AnimatedPlaceholder/types/AnimatedPlaceholderType';
 import { type ReactNode } from 'react';
 
 export const Empty = ({

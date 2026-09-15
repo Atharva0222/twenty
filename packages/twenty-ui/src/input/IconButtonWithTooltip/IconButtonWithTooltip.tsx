@@ -1,7 +1,5 @@
-import {
-  IconButton,
-  type IconButtonProps,
-} from '@ui/input/IconButton/IconButton';
+import { IconButton } from '@ui/input/IconButton/IconButton';
+import type { IconButtonProps } from '@ui/input/IconButton/types/IconButtonProps';
 import { AppTooltip, TooltipDelay, TooltipPosition } from '@ui/surfaces';
 import { useId } from 'react';
 
