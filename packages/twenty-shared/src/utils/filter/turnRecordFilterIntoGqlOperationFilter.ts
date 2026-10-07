@@ -681,12 +681,15 @@ const buildDirectFieldGqlOperationFilter = ({
             } as FloatFilter,
           };
         case RecordFilterOperand.IS_NOT:
+          // Not wrapped eq: NOT (field = X) can never match a NULL field in
+          // SQL (NOT NULL is NULL, not true), so a field with no value would
+          // be silently excluded from "is not X" even though it plainly
+          // isn't X. neq already encodes "not equal, including NULL"
+          // correctly.
           return {
-            not: {
-              [fieldMetadataItem.name]: {
-                eq: parseNumericFilterValue(recordFilter.value),
-              } as FloatFilter,
-            },
+            [fieldMetadataItem.name]: {
+              neq: parseNumericFilterValue(recordFilter.value),
+            } as FloatFilter,
           };
         default:
           throw new Error(
@@ -827,14 +830,14 @@ const buildDirectFieldGqlOperationFilter = ({
               } as CurrencyFilter,
             };
           case RecordFilterOperand.IS_NOT:
+            // See the NUMBER filter's IS_NOT comment above: neq (not a
+            // wrapped eq) is what correctly includes a NULL amountMicros.
             return {
-              not: {
-                [fieldMetadataItem.name]: {
-                  amountMicros: {
-                    eq: parseNumericFilterValue(recordFilter.value) * 1000000,
-                  },
-                } as CurrencyFilter,
-              },
+              [fieldMetadataItem.name]: {
+                amountMicros: {
+                  neq: parseNumericFilterValue(recordFilter.value) * 1000000,
+                },
+              } as CurrencyFilter,
             };
           default:
             throw new Error(
